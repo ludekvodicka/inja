@@ -54,7 +54,7 @@ TEST_CASE("types") {
 		CHECK( env.render("{% for type, name in relatives %}{{ type }}: {{ name }}, {% endfor %}", data) == "brother: Chris, mother: Maria, sister: Jenny, " );
 
 		CHECK_THROWS_WITH( env.render("{% for name ins names %}a{% endfor %}", data), "Unknown loop statement."  );
-		// CHECK_THROWS_WITH( env.render("{% for name in relatives %}{{ name }}{% endfor %}", data), "[json.exception.type_error.302] type must be array, but is object"  );
+		CHECK_THROWS_WITH( env.render("{% for name in relatives %}{{ name }}{% endfor %}", data), "[json.exception.type_error.302] type must be array, but is object"  );
 	}
 
 	SECTION("conditionals") {
