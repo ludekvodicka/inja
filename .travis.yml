@@ -20,7 +20,7 @@ matrix:
       before_install:
         - pip install --user cpp-coveralls
       after_success:
-        - make clean
+        # - make clean
         # - coveralls --exclude lib --exclude tests --gcov-options '\-lp'
 
     - os: linux
@@ -90,6 +90,6 @@ script:
   - $CXX --version
 
   - mkdir -p build && cd build
-  - cmake .. && cmake --build . --config Release -- -j4
+  - cmake ..
+  - cmake --build . --config Release -- -j4
   - ctest -C Release -V
-  - cd ..
